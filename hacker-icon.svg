@@ -1,47 +1,114 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
-  <!-- 背景 -->
-  <rect width="128" height="128" rx="16" fill="#121212" />
-  
-  <!-- 环形矩阵 -->
-  <g opacity="0.15">
-    <text x="10" y="14" font-family="monospace" font-size="10" fill="#00ff00">01100101</text>
-    <text x="10" y="28" font-family="monospace" font-size="10" fill="#00ff00">01001000</text>
-    <text x="10" y="42" font-family="monospace" font-size="10" fill="#00ff00">00110101</text>
-    <text x="10" y="56" font-family="monospace" font-size="10" fill="#00ff00">01010001</text>
-    <text x="10" y="70" font-family="monospace" font-size="10" fill="#00ff00">10110100</text>
-    <text x="10" y="84" font-family="monospace" font-size="10" fill="#00ff00">11001010</text>
-    <text x="10" y="98" font-family="monospace" font-size="10" fill="#00ff00">01101100</text>
-    <text x="10" y="112" font-family="monospace" font-size="10" fill="#00ff00">10010110</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="crazyedusrc hacker icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#071018"/>
+      <stop offset="55%" stop-color="#0b1622"/>
+      <stop offset="100%" stop-color="#132033"/>
+    </linearGradient>
+
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0e1a2b"/>
+      <stop offset="100%" stop-color="#0a121d"/>
+    </linearGradient>
+
+    <linearGradient id="name" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5ef2a0"/>
+      <stop offset="60%" stop-color="#3ddc84"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+
+    <radialGradient id="halo" cx="50%" cy="42%" r="55%">
+      <stop offset="0%" stop-color="#22c55e" stop-opacity="0.20"/>
+      <stop offset="70%" stop-color="#22c55e" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
+    </radialGradient>
+
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#1d3b52" stroke-width="1" stroke-opacity="0.35"/>
+    </pattern>
+
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softglow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+
+    <clipPath id="frame">
+      <rect x="0" y="0" width="512" height="512" rx="72"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <!-- background -->
+    <rect width="512" height="512" fill="url(#bg)"/>
+    <rect width="512" height="512" fill="url(#grid)"/>
+    <rect width="512" height="512" fill="url(#halo)"/>
+
+    <!-- faint code rain -->
+    <g fill="#2ee6a8" font-family="ui-monospace, 'Cascadia Code', Consolas, monospace" font-size="15" opacity="0.16">
+      <text x="26" y="96">01001</text>
+      <text x="26" y="126">10110</text>
+      <text x="26" y="156">01110</text>
+      <text x="26" y="186">11001</text>
+      <text x="452" y="300">10011</text>
+      <text x="452" y="330">01101</text>
+      <text x="452" y="360">11010</text>
+      <text x="452" y="390">00110</text>
+    </g>
+
+    <!-- terminal window -->
+    <g>
+      <rect x="66" y="146" width="380" height="228" rx="22" fill="url(#card)" stroke="#22c55e" stroke-opacity="0.35" stroke-width="2"/>
+      <path d="M66 168a22 22 0 0 1 22-22h336a22 22 0 0 1 22 22v18H66z" fill="#16283c"/>
+      <line x1="66" y1="186" x2="446" y2="186" stroke="#22c55e" stroke-opacity="0.28" stroke-width="2"/>
+      <circle cx="92" cy="166" r="6" fill="#ff5f57"/>
+      <circle cx="114" cy="166" r="6" fill="#febc2e"/>
+      <circle cx="136" cy="166" r="6" fill="#28c840"/>
+      <text x="166" y="171" fill="#5b7b93" font-family="ui-monospace, 'Cascadia Code', Consolas, monospace" font-size="13">crazyedusrc — /bin/sh</text>
+
+      <!-- prompt line -->
+      <text x="96" y="246" fill="#22c55e" font-family="ui-monospace, 'Cascadia Code', Consolas, monospace" font-size="20">root@edu:~#</text>
+      <text x="216" y="246" fill="#cbd5e1" font-family="ui-monospace, 'Cascadia Code', Consolas, monospace" font-size="20">./run --src</text>
+
+      <!-- big name -->
+      <g filter="url(#glow)">
+        <text x="256" y="316" text-anchor="middle" fill="url(#name)"
+              font-family="ui-monospace, 'Cascadia Code', 'Fira Code', Consolas, monospace"
+              font-size="52" font-weight="700" letter-spacing="1">crazyedusrc</text>
+      </g>
+
+      <!-- cursor -->
+      <rect x="300" y="332" width="16" height="24" fill="#3ddc84">
+        <animate attributeName="opacity" values="1;1;0;0" dur="1.1s" repeatCount="indefinite"/>
+      </rect>
+
+      <text x="256" y="358" text-anchor="middle" fill="#7dd3fc" opacity="0.75"
+            font-family="ui-monospace, 'Cascadia Code', Consolas, monospace" font-size="17" letter-spacing="3">C R A Z Y · E D U · S R C</text>
+    </g>
+
+    <!-- shield badge bottom-right -->
+    <g transform="translate(392 404)">
+      <circle cx="24" cy="24" r="34" fill="#0b1622" stroke="#22c55e" stroke-opacity="0.45" stroke-width="2"/>
+      <path d="M24 8 L40 15 v14c0 11-7 19-16 23-9-4-16-12-16-23V15z" fill="none" stroke="#3ddc84" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M18 26 h12 v7 h-12 z" fill="#3ddc84"/>
+      <path d="M24 20 v6" stroke="#3ddc84" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <!-- hood figure mark, top-left corner -->
+    <g transform="translate(40 40)" opacity="0.9">
+      <circle cx="30" cy="30" r="30" fill="#0b1622" stroke="#38bdf8" stroke-opacity="0.35" stroke-width="2"/>
+      <path d="M30 14c-9 0-16 7-16 16v10c0 6 4 10 10 10h12c6 0 10-4 10-10V30c0-9-7-16-16-16z" fill="#10202f" stroke="#7dd3fc" stroke-width="2.5"/>
+      <circle cx="24" cy="32" r="2.6" fill="#7dd3fc"/>
+      <circle cx="36" cy="32" r="2.6" fill="#7dd3fc"/>
+      <path d="M22 40h16" stroke="#7dd3fc" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+    </g>
   </g>
-  
-  <!-- 搜索放大镜 - 主体 -->
-  <circle cx="54" cy="52" r="26" fill="none" stroke="#00ff00" stroke-width="3" />
-  <line x1="72" y1="70" x2="92" y2="90" stroke="#00ff00" stroke-width="5" stroke-linecap="round" />
-  
-  <!-- 放大镜内部扫描线 -->
-  <line x1="38" y1="52" x2="70" y2="52" stroke="#00ff00" stroke-width="1" stroke-dasharray="2,3" />
-  <line x1="54" y1="36" x2="54" y2="68" stroke="#00ff00" stroke-width="1" stroke-dasharray="2,3" />
-  
-  <!-- 搜索锁定框架 -->
-  <path d="M54 36 L58 36 L58 40 M54 68 L58 68 L58 64 M38 52 L38 48 L42 48 M70 52 L70 48 L66 48" stroke="#00ff00" stroke-width="1.5" />
-  
-  <!-- 数据流指示 -->
-  <path d="M82 90 C95 95, 100 85, 108 80" stroke="#00ff00" stroke-width="1.5" stroke-dasharray="3,2" />
-  <circle cx="110" cy="78" r="4" fill="#00ff00" />
-  
-  <!-- 雷达效果 -->
-  <circle cx="54" cy="52" r="15" fill="none" stroke="#00ff00" stroke-width="0.8" opacity="0.7" />
-  <circle cx="54" cy="52" r="10" fill="none" stroke="#00ff00" stroke-width="0.8" opacity="0.8" />
-  <circle cx="54" cy="52" r="5" fill="none" stroke="#00ff00" stroke-width="0.8" opacity="0.9" />
-  
-  <!-- 中心扫描点 -->
-  <circle cx="54" cy="52" r="2" fill="#00ff00" />
-  
-  <!-- 连接线 -->
-  <path d="M30 30 L20 20 M78 30 L88 20" stroke="#00ff00" stroke-width="1.5" stroke-linecap="round" />
-  
-  <!-- 搜索关键字指示 -->
-  <text x="30" y="104" font-family="monospace" font-size="8" fill="#00ff00">Search Hacking</text>
-  <line x1="30" y1="108" x2="90" y2="108" stroke="#00ff00" stroke-width="1" stroke-dasharray="1,1" />
-</svg> 
+
+  <rect x="1" y="1" width="510" height="510" rx="71" fill="none" stroke="#22c55e" stroke-opacity="0.35" stroke-width="2"/>
+</svg>
