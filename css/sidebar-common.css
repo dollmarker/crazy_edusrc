@@ -1,0 +1,541 @@
+/* iOS 16 Style - Sidebar */
+
+/* 基础侧边栏 - 扁平白卡片 */
+.hacking-sidebar {
+  width: 340px;
+  background: #FFFFFF;
+  border-radius: 14px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  border: 0.5px solid #E5E5EA;
+  z-index: 1000;
+  max-height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: sticky;
+  top: 10px;
+  margin-bottom: 16px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateX(20px);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hacking-sidebar.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 移除玻璃效果 */
+.glass-morph {
+  background: #FFFFFF;
+  backdrop-filter: none;
+  border: 0.5px solid #E5E5EA;
+  box-shadow: none;
+}
+
+/* 侧边栏头部 */
+.sidebar-header {
+  padding: 16px;
+  background: #FFFFFF;
+  border-bottom: 0.5px solid #E5E5EA;
+  border-radius: 14px 14px 0 0;
+}
+
+.sidebar-header-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #000000;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.sidebar-header-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* 排序选择器 */
+.sort-select {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 0.5px solid #E5E5EA;
+  background: #F2F2F7;
+  color: #000000;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.sort-select:hover {
+  background: #E5E5EA;
+}
+
+.sort-select:focus {
+  border-color: #007AFF;
+  background: #FFFFFF;
+}
+
+/* 侧边栏内容 */
+.sidebar-content {
+  padding: 12px;
+  background: #FFFFFF;
+}
+
+/* 语法容器 */
+.syntax-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+}
+
+/* 语法分组标题 */
+.syntax-divider {
+  background-color: #F2F2F7;
+  color: #8E8E93;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  margin: 8px 0 4px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* 风险等级分组标题样式 */
+.risk-divider-high {
+  background: linear-gradient(135deg, rgba(255, 59, 48, 0.1) 0%, rgba(255, 59, 48, 0.05) 100%);
+  color: #FF3B30;
+  border-left: 3px solid #FF3B30;
+  text-transform: none;
+  font-size: 12px;
+  padding: 6px 10px;
+  margin: 12px 0 6px 0;
+}
+
+.risk-divider-medium {
+  background: linear-gradient(135deg, rgba(255, 149, 0, 0.1) 0%, rgba(255, 149, 0, 0.05) 100%);
+  color: #FF9500;
+  border-left: 3px solid #FF9500;
+  text-transform: none;
+  font-size: 12px;
+  padding: 6px 10px;
+  margin: 12px 0 6px 0;
+}
+
+.risk-divider-low {
+  background: linear-gradient(135deg, rgba(52, 199, 89, 0.1) 0%, rgba(52, 199, 89, 0.05) 100%);
+  color: #34C759;
+  border-left: 3px solid #34C759;
+  text-transform: none;
+  font-size: 12px;
+  padding: 6px 10px;
+  margin: 12px 0 6px 0;
+}
+
+.risk-divider-info {
+  background: linear-gradient(135deg, rgba(0, 122, 255, 0.1) 0%, rgba(0, 122, 255, 0.05) 100%);
+  color: #007AFF;
+  border-left: 3px solid #007AFF;
+  text-transform: none;
+  font-size: 12px;
+  padding: 6px 10px;
+  margin: 12px 0 6px 0;
+}
+
+/* 风险等级分组 - iOS扁平风格 */
+.risk-info {
+  background-color: transparent;
+  border-left: none;
+  padding: 0;
+}
+
+.risk-low {
+  background-color: transparent;
+  border-left: none;
+  padding: 0;
+}
+
+.risk-medium {
+  background-color: transparent;
+  border-left: none;
+  padding: 0;
+}
+
+.risk-high {
+  background-color: transparent;
+  border-left: none;
+  padding: 0;
+}
+
+/* 语法按钮 - iOS扁平风格 */
+.syntax-btn {
+  background: #F2F2F7;
+  color: #000000;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 1.4;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.syntax-btn:hover {
+  transform: translateX(2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.syntax-btn:active {
+  transform: scale(0.98);
+}
+
+/* 根据风险等级设置背景颜色 */
+.syntax-btn.risk-high {
+  background: linear-gradient(135deg, rgba(255, 59, 48, 0.12) 0%, rgba(255, 59, 48, 0.08) 100%);
+  border-left: 3px solid #FF3B30;
+  padding-left: 9px;
+}
+
+.syntax-btn.risk-high:hover {
+  background: linear-gradient(135deg, rgba(255, 59, 48, 0.18) 0%, rgba(255, 59, 48, 0.12) 100%);
+}
+
+.syntax-btn.risk-medium {
+  background: linear-gradient(135deg, rgba(255, 149, 0, 0.12) 0%, rgba(255, 149, 0, 0.08) 100%);
+  border-left: 3px solid #FF9500;
+  padding-left: 9px;
+}
+
+.syntax-btn.risk-medium:hover {
+  background: linear-gradient(135deg, rgba(255, 149, 0, 0.18) 0%, rgba(255, 149, 0, 0.12) 100%);
+}
+
+.syntax-btn.risk-low {
+  background: linear-gradient(135deg, rgba(52, 199, 89, 0.12) 0%, rgba(52, 199, 89, 0.08) 100%);
+  border-left: 3px solid #34C759;
+  padding-left: 9px;
+}
+
+.syntax-btn.risk-low:hover {
+  background: linear-gradient(135deg, rgba(52, 199, 89, 0.18) 0%, rgba(52, 199, 89, 0.12) 100%);
+}
+
+.syntax-btn.risk-info {
+  background: linear-gradient(135deg, rgba(0, 122, 255, 0.12) 0%, rgba(0, 122, 255, 0.08) 100%);
+  border-left: 3px solid #007AFF;
+  padding-left: 9px;
+}
+
+.syntax-btn.risk-info:hover {
+  background: linear-gradient(135deg, rgba(0, 122, 255, 0.18) 0%, rgba(0, 122, 255, 0.12) 100%);
+}
+
+/* 侧边栏按钮 */
+.sidebar-button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.blue-button {
+  background: #007AFF;
+  color: #FFFFFF;
+}
+
+.blue-button:hover {
+  background: #0051D5;
+}
+
+.blue-button:active {
+  transform: scale(0.95);
+}
+
+.gray-button {
+  background: #E5E5EA;
+  color: #000000;
+}
+
+.gray-button:hover {
+  background: #D1D1D6;
+}
+
+.gray-button:active {
+  transform: scale(0.95);
+}
+
+/* URL面板 */
+.url-panel {
+  background: #F2F2F7;
+  border-radius: 10px;
+  margin: 12px;
+  overflow: hidden;
+}
+
+.url-panel-header {
+  padding: 12px 14px;
+  background: #F2F2F7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.url-panel-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.url-count {
+  display: inline-block;
+  background: #E5E5EA;
+  color: #8E8E93;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 6px;
+}
+
+.url-panel-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.url-list {
+  max-height: 300px;
+  overflow-y: auto;
+  background: #FFFFFF;
+  border-radius: 8px;
+  margin: 8px;
+}
+
+.url-item {
+  padding: 10px 12px;
+  border-bottom: 0.5px solid #E5E5EA;
+  font-size: 13px;
+  color: #000000;
+  cursor: pointer;
+  transition: background 0.2s;
+  word-break: break-all;
+}
+
+.url-item:last-child {
+  border-bottom: none;
+}
+
+.url-item:hover {
+  background: #F2F2F7;
+}
+
+.url-item:active {
+  background: #E5E5EA;
+}
+
+/* 侧边栏底部 */
+.sidebar-footer {
+  padding: 12px 16px;
+  background: #F2F2F7;
+  border-top: 0.5px solid #E5E5EA;
+  border-radius: 0 0 14px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-footer-links {
+  display: flex;
+  gap: 16px;
+}
+
+.sidebar-footer-link {
+  color: #007AFF;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: opacity 0.2s;
+}
+
+.sidebar-footer-link:hover {
+  opacity: 0.7;
+}
+
+.sidebar-footer-version {
+  color: #8E8E93;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* 调试信息 */
+.url-debug-info {
+  background: #FFF3E0;
+  border: 0.5px solid #FF9500;
+  border-radius: 10px;
+  padding: 12px;
+  margin: 12px;
+  font-size: 13px;
+  color: #000000;
+}
+
+.debug-icon {
+  color: #FF9500;
+  margin-right: 8px;
+}
+
+.debug-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.debug-tips {
+  font-size: 12px;
+  color: #8E8E93;
+  list-style-position: inside;
+}
+
+/* 刷新按钮 */
+.refresh-btn {
+  background: #007AFF;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.refresh-btn:hover {
+  background: #0051D5;
+}
+
+.refresh-btn:active {
+  transform: scale(0.95);
+}
+
+/* 复制状态 */
+.copy-success i {
+  color: #34C759;
+}
+
+.copy-error i {
+  color: #FF3B30;
+}
+
+/* 滚动条 */
+.hacking-sidebar::-webkit-scrollbar,
+.url-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.hacking-sidebar::-webkit-scrollbar-track,
+.url-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.hacking-sidebar::-webkit-scrollbar-thumb,
+.url-list::-webkit-scrollbar-thumb {
+  background-color: #C7C7CC;
+  border-radius: 3px;
+}
+
+.hacking-sidebar::-webkit-scrollbar-thumb:hover,
+.url-list::-webkit-scrollbar-thumb:hover {
+  background-color: #8E8E93;
+}
+
+/* 空状态 */
+.empty-state {
+  padding: 40px 20px;
+  text-align: center;
+  color: #8E8E93;
+  font-size: 14px;
+}
+
+.empty-state i {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+/* 加载状态 */
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #E5E5EA;
+  border-top-color: #007AFF;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 徽章 */
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.badge-info {
+  background: #E3F2FD;
+  color: #007AFF;
+}
+
+.badge-low {
+  background: #E8F5E9;
+  color: #34C759;
+}
+
+.badge-medium {
+  background: #FFF3E0;
+  color: #FF9500;
+}
+
+.badge-high {
+  background: #FFEBEE;
+  color: #FF3B30;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .hacking-sidebar {
+    width: 100%;
+    max-width: 340px;
+  }
+}

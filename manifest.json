@@ -1,0 +1,108 @@
+{
+  "manifest_version": 3,
+  "name": "crazyedusrc",
+  "version": "1.0.0",
+  "description": "EduSRC 教育行业漏洞猎洞工具：在Google、百度和Bing搜索结果页注入猎洞侧边栏，内置40+教育行业专用语法、资产测绘联动（Fofa/Quake/Hunter/ZoomEye）、批量高危执行与敏感URL高亮",
+  "homepage_url": "https://github.com/dollmarker/crazy_edusrc",
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.google.com/*",
+        "*://*.google.co.jp/*",
+        "*://*.google.co.uk/*",
+        "*://*.google.com.hk/*",
+        "*://*.google.co.in/*",
+        "*://*.google.fr/*",
+        "*://*.google.de/*",
+        "*://*.google.it/*",
+        "*://*.google.es/*",
+        "*://*.google.ca/*",
+        "*://*.google.com.br/*",
+        "*://*.google.com.au/*",
+        "*://*.google.ru/*",
+        "*://*.google.nl/*"
+      ],
+      "js": ["js/content-google.js"],
+      "css": ["css/sidebar-common.css", "css/dark-mode.css", "css/content.css", "css/edu-enhance.css"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["*://*.baidu.com/*"],
+      "js": ["js/content-baidu.js"],
+      "css": ["css/sidebar-common.css", "css/dark-mode.css", "css/baidu-content.css", "css/edu-enhance.css"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "*://*.bing.com/*",
+        "*://*.bing.cn/*",
+        "*://*.bing.co.uk/*",
+        "*://*.bing.de/*",
+        "*://*.bing.fr/*",
+        "*://*.bing.it/*",
+        "*://*.bing.es/*",
+        "*://*.bing.ca/*",
+        "*://*.bing.com.au/*",
+        "*://*.bing.co.jp/*"
+      ],
+      "js": ["js/content-bing.js"],
+      "css": ["css/sidebar-common.css", "css/dark-mode.css", "css/bing-content.css", "css/edu-enhance.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": [
+    "storage",
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://*.google.com/*",
+    "*://*.google.co.jp/*",
+    "*://*.google.co.uk/*",
+    "*://*.google.com.hk/*",
+    "*://*.google.co.in/*",
+    "*://*.google.fr/*",
+    "*://*.google.de/*",
+    "*://*.google.it/*",
+    "*://*.google.es/*",
+    "*://*.google.ca/*",
+    "*://*.google.com.br/*",
+    "*://*.google.com.au/*",
+    "*://*.google.ru/*",
+    "*://*.google.nl/*",
+    "*://*.baidu.com/*",
+    "*://*.bing.com/*",
+    "*://*.bing.cn/*",
+    "*://*.bing.co.uk/*",
+    "*://*.bing.de/*",
+    "*://*.bing.fr/*",
+    "*://*.bing.it/*",
+    "*://*.bing.es/*",
+    "*://*.bing.ca/*",
+    "*://*.bing.com.au/*",
+    "*://*.bing.co.jp/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["images/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

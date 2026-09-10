@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>crazyedusrc - 设置</title>
+  <!-- Tailwind CSS 保留CDN，确保样式正常 -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Font Awesome 本地化 -->
+  <link rel="stylesheet" href="libs/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="css/options.css">
+  <link rel="stylesheet" href="css/options-layout.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <!-- 顶部导航栏 -->
+  <div class="gradient-bg text-white shadow-lg">
+    <div class="px-6 py-3.5">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <div class="header-logo">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h1 class="header-title">crazyedusrc</h1>
+        </div>
+        <div class="flex items-center space-x-3">
+          <!-- 主题切换按钮 -->
+          <button id="themeToggle" class="header-btn" aria-label="切换主题" title="切换深色/浅色模式">
+            <span class="theme-icon">🌙</span>
+          </button>
+          <!-- GitHub链接 -->
+          <a href="#" id="githubLink" target="_blank" class="header-btn" title="访问GitHub仓库">
+            <i class="fab fa-github"></i>
+          </a>
+          <!-- 版本信息 -->
+          <div class="header-version">
+            <span id="versionText">v2.3.0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 主布局容器 -->
+  <div class="main-layout">
+    <!-- 左侧菜单 -->
+    <aside class="sidebar-menu">
+      <nav class="menu-nav">
+        <a href="#general" class="menu-item tab-btn tab-active">
+          <i class="fas fa-cog menu-icon"></i>
+          <span>基本设置</span>
+        </a>
+        <a href="#syntax" class="menu-item tab-btn">
+          <i class="fas fa-code menu-icon"></i>
+          <span>语法管理</span>
+        </a>
+        <a href="#about" class="menu-item tab-btn">
+          <i class="fas fa-info-circle menu-icon"></i>
+          <span>关于</span>
+        </a>
+      </nav>
+    </aside>
+    
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+    <!-- 基本设置部分 -->
+    <section id="general" class="mb-8 tab-content">
+      <h2 class="page-title">
+        <i class="fas fa-cog"></i>
+        基本设置
+      </h2>
+      
+      <div class="glass-card rounded-xl p-6 mb-6">
+        <h3 class="text-lg font-medium text-gray-800 mb-4">显示设置</h3>
+        
+        <div class="flex justify-between items-center mb-6 pb-4 border-b">
+          <div class="flex-1 mr-4">
+            <div class="font-medium text-gray-700 mb-1">启用侧边栏</div>
+            <p class="text-gray-600 text-sm">开启后，在搜索结果页面（URL中包含 <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">site:</code> 参数）自动显示Hacking语法快捷工具侧边栏，提供常用的搜索语法按钮和URL提取功能</p>
+          </div>
+          <div class="toggle-switch active" id="toggleSidebar"></div>
+        </div>
+      </div>
+      
+      <div class="glass-card rounded-xl p-6 mb-6">
+        <h3 class="text-lg font-medium text-gray-800 mb-4">搜索引擎设置</h3>
+        
+        <div class="flex justify-between items-center mb-6 pb-4 border-b">
+          <div class="flex-1 mr-4">
+            <div class="font-medium text-gray-700 mb-1">
+              <i class="fab fa-google text-blue-600 mr-1"></i> Google搜索支持
+            </div>
+            <p class="text-gray-600 text-sm">在 <strong>www.google.com</strong> 搜索结果页面启用侧边栏功能，支持完整的Google Search Dorks语法（如 intitle:、inurl:、filetype: 等）</p>
+          </div>
+          <div class="toggle-switch active" id="toggleGoogle"></div>
+        </div>
+        
+        <div class="flex justify-between items-center  mb-6 pb-4 border-b">
+          <div class="flex-1 mr-4">
+            <div class="font-medium text-gray-700 mb-1">
+              <i class="fas fa-search text-blue-500 mr-1"></i> 百度搜索支持
+            </div>
+            <p class="text-gray-600 text-sm">在 <strong>www.baidu.com</strong> 搜索结果页面启用侧边栏功能，支持百度搜索语法（如 intitle:、inurl:、filetype: 等）</p>
+          </div>
+          <div class="toggle-switch" id="toggleBaidu"></div>
+        </div>
+        
+        <div class="flex justify-between items-center">
+          <div class="flex-1 mr-4">
+            <div class="font-medium text-gray-700 mb-1">
+              <i class="fab fa-microsoft text-blue-700 mr-1"></i> Bing搜索支持
+            </div>
+            <p class="text-gray-600 text-sm">在 <strong>www.bing.com</strong> 搜索结果页面启用侧边栏功能，支持Bing搜索语法（如 intitle:、inurl:、contains: 等）</p>
+          </div>
+          <div class="toggle-switch" id="toggleBing"></div>
+        </div>
+      </div>
+      
+      <!-- URL黑名单设置 -->
+      <div class="glass-card rounded-xl p-6 mb-6">
+        <h3 class="text-lg font-medium text-gray-800 mb-4">URL黑名单设置</h3>
+        
+        <div class="mb-4">
+          <div class="font-medium text-gray-700 mb-2">黑名单过滤规则</div>
+          <p class="text-gray-600 text-sm mb-4">添加域名或URL模式以在提取URL时过滤匹配的结果，每行一个规则</p>
+          
+          <div class="relative">
+            <textarea 
+              id="urlBlacklist" 
+              rows="6" 
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-sm"
+              placeholder="example.com&#10;*.example.org&#10;/.*\.gov$/&#10;/https:\/\/suspicious\..*/"></textarea>
+          </div>
+          
+          <div class="mt-2 flex items-center text-xs text-gray-500">
+            <i class="fas fa-info-circle mr-1"></i>
+            <span>支持通配符（如：*.example.com）和正则表达式（如：/.*\.edu$/）</span>
+          </div>
+        </div>
+        
+        <div class="flex justify-between items-center mt-4">
+          <div class="bg-blue-50 rounded-lg p-3 text-blue-700 text-sm flex-1 mr-3">
+            <div class="flex items-start">
+              <i class="fas fa-lightbulb text-blue-500 mt-1 mr-2"></i>
+              <div>
+                <p class="mb-1"><strong>规则说明：</strong></p>
+                <ul class="list-disc ml-4 space-y-1">
+                  <li><strong>精确匹配</strong>：直接输入域名，如 <code class="bg-blue-100 px-1 rounded">example.com</code></li>
+                  <li><strong>通配符</strong>：使用 * 表示任意字符，如 <code class="bg-blue-100 px-1 rounded">*.example.org</code></li>
+                  <li><strong>正则表达式</strong>：使用 / 包裹，如 <code class="bg-blue-100 px-1 rounded">/.*\.gov$/</code></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <button id="saveBlacklist" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg shadow-md transition-all duration-300 btn-effect">
+              <i class="fas fa-save mr-2"></i> 保存规则
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="glass-card rounded-xl p-6">
+        <h3 class="text-lg font-medium text-gray-800 mb-4">数据管理</h3>
+        
+        <div class="flex justify-between items-center mb-4 pb-4 border-b">
+          <div>
+            <div class="font-medium text-gray-700 mb-1">导出配置</div>
+            <p class="text-gray-600 text-sm">将当前所有设置和自定义语法导出为JSON文件</p>
+          </div>
+          <button id="exportConfig" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-1.5 px-4 rounded-lg shadow-sm transition-all duration-300 text-sm flex items-center">
+            <i class="fas fa-download mr-2"></i> 导出
+          </button>
+        </div>
+        
+        <div class="flex justify-between items-center mb-4 pb-4 border-b">
+          <div>
+            <div class="font-medium text-gray-700 mb-1">导入配置</div>
+            <p class="text-gray-600 text-sm">从JSON文件中导入设置和自定义语法</p>
+          </div>
+          <div class="flex items-center">
+            <label for="importConfigInput" id="importConfig" class="bg-green-600 hover:bg-green-700 text-white font-medium py-1.5 px-4 rounded-lg shadow-sm transition-all duration-300 text-sm flex items-center cursor-pointer">
+              <i class="fas fa-upload mr-2"></i> 导入
+              <input type="file" id="importConfigInput" accept=".json" class="hidden" />
+            </label>
+          </div>
+        </div>
+        
+        <div class="flex justify-between items-center">
+          <div>
+            <div class="font-medium text-gray-700 mb-1">重置所有设置</div>
+            <p class="text-gray-600 text-sm">将所有设置和语法恢复到默认状态</p>
+          </div>
+          <button id="resetSettings" class="bg-red-600 hover:bg-red-700 text-white font-medium py-1.5 px-4 rounded-lg shadow-sm transition-all duration-300 text-sm flex items-center">
+            <i class="fas fa-trash-alt mr-2"></i> 重置
+          </button>
+        </div>
+        
+        <div class="mt-4 bg-yellow-50 rounded-lg p-4 flex text-yellow-800">
+          <i class="fas fa-exclamation-triangle text-yellow-600 text-lg mr-3 mt-1"></i>
+          <div>
+            <h4 class="font-medium mb-1">谨慎操作</h4>
+            <p class="text-sm">
+              重置操作将会清除所有自定义语法和设置，恢复到扩展的初始状态。此操作不可撤销，请谨慎操作。导入配置前建议先导出备份当前配置。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 语法管理部分 -->
+    <section id="syntax" class="hidden mb-8 tab-content">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="page-title mb-0">
+          <i class="fas fa-code"></i>
+          语法管理
+        </h2>
+      </div>
+      
+      <!-- 搜索框部分 -->
+      <div class="glass-card rounded-xl p-6 mb-6">
+        <div class="relative">
+          <input
+            type="text"
+            id="syntaxSearch"
+            placeholder="搜索语法..."
+            class="w-full px-4 py-2.5 pl-11 pr-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+          <div class="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none">
+            <i class="fas fa-search"></i>
+          </div>
+          <div class="mt-3 flex text-sm text-gray-500 justify-between items-center">
+            <div>
+              <span class="mr-3"><i class="fas fa-filter mr-1"></i>过滤条件:</span>
+              <label class="inline-flex items-center mr-4 cursor-pointer">
+                <input type="checkbox" id="filterBuiltin" class="form-checkbox h-4 w-4 text-blue-600 rounded" checked>
+                <span class="ml-2">内置语法</span>
+              </label>
+              <label class="inline-flex items-center mr-4 cursor-pointer">
+                <input type="checkbox" id="filterCustom" class="form-checkbox h-4 w-4 text-blue-600 rounded" checked>
+                <span class="ml-2">自定义语法</span>
+              </label>
+            </div>
+            <div>
+              <span id="searchResult" class="text-gray-500" style="display: none;">共找到 <span class="font-semibold">0</span> 条语法</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 内置语法部分 -->
+      <div class="glass-card rounded-xl p-6 mb-6">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg font-medium text-gray-800">内置语法</h3>
+          <div class="text-sm text-gray-500" id="builtinSyntaxCount">0个语法</div>
+        </div>
+        
+        <div class="space-y-3" id="builtinSyntaxList">
+          <!-- 语法项将通过 JavaScript 动态加载 -->
+        </div>
+      </div>
+      <div class="bg-blue-50 rounded-lg p-4 flex  p-6 mb-6">
+        <i class="fas fa-lightbulb text-blue-600 text-lg mr-3 mt-1"></i>
+        <div>
+          <h4 class="text-blue-800 font-medium mb-1">寻找灵感？</h4>
+          <p class="text-blue-700 text-sm">
+            可以访问 <a href="https://www.exploit-db.com/google-hacking-database" target="_blank" class="text-blue-600 hover:underline">Google Hacking Database (GHDB)</a> 查找更多有用的搜索语法。在添加语法时使用 <code class="bg-blue-100 px-1 rounded">{target_domain}</code> 作为占位符，它会自动替换为site:指定的域名。
+          </p>
+        </div>
+      </div>
+      <!-- 自定义语法部分 -->
+      <div class="glass-card rounded-xl p-6 mb-6">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg font-medium text-gray-800">自定义语法</h3>
+          <div class="text-sm text-gray-500" id="customSyntaxCount">0个语法</div>
+        </div>
+        
+        <div class="space-y-3" id="customSyntaxList">
+          <!-- 语法项将通过 JavaScript 动态加载 -->
+        </div>
+        
+        <div class="flex justify-end mt-6">
+          <button class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg shadow-md transition-all duration-300 btn-effect flex items-center" id="addCustomSyntax">
+            <i class="fas fa-plus mr-2"></i> 添加语法
+          </button>
+          <button class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg shadow-md transition-all duration-300 btn-effect flex items-center ml-4" id="clearAllSyntaxBtn">
+            <i class="fas fa-trash-alt mr-2"></i> 清除所有自定义语法
+          </button>
+        </div>
+      </div>
+      
+      <!-- 添加语法提示 -->
+      
+    </section>
+    
+    <!-- 关于部分 -->
+    <section id="about" class="hidden mb-8 tab-content">
+      <h2 class="page-title">
+        <i class="fas fa-info-circle"></i>
+        关于
+      </h2>
+      
+      <!-- 产品概览 -->
+      <div class="glass-card rounded-xl p-6 mb-6">
+        <div class="flex flex-col md:flex-row items-center mb-6 pb-6 border-b">
+          <img src="../images/icon128.png" alt="扩展图标" class="w-24 h-24 mb-4 md:mb-0 md:mr-6">
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">crazyedusrc</h3>
+            <p class="text-lg text-blue-600 font-medium mb-2">EduSRC 教育行业漏洞猎洞工具</p>
+            <p class="text-gray-600 mb-2">版本 <span id="aboutVersionText" class="font-medium">加载中...</span></p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Chrome扩展</span>
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">开源项目</span>
+              <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">安全研究</span>
+              <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">渗透测试</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-6 pb-6 border-b">
+          <h4 class="text-lg font-medium text-gray-800 mb-3">🔍 产品简介</h4>
+          <p class="text-gray-600 mb-3 leading-relaxed">
+            <strong>一键式搜索引擎Hacking工具，让安全研究更高效</strong>
+          </p>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            在 Google、百度、Bing 搜索结果页自动注入侧边栏，提供预定义和自定义的 Hacking 语法按钮。支持 <code class="bg-gray-100 px-1 rounded">site:</code> 查询自动检测，一键执行高级搜索。
+          </p>
+          <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-3 border border-blue-200">
+            <p class="text-blue-800 text-sm">
+              <i class="fas fa-fire mr-2"></i>
+              <strong>核心优势</strong>：40+ Edu 专用语法 | 攻击面分类分组 | 资产测绘联动 | 批量高危执行 | 敏感URL高亮 | URL批量提取 | 多引擎支持 | 零追踪零配置
+            </p>
+          </div>
+        </div>
+
+        <!-- 核心功能 -->
+        <div class="mb-6 pb-6 border-b">
+          <h4 class="text-lg font-medium text-gray-800 mb-4">✨ 核心功能</h4>
+          
+          <div class="grid md:grid-cols-3 gap-3">
+            <!-- 一键式搜索 -->
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4 border border-blue-200">
+              <div class="flex items-center mb-2">
+                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-2">
+                  <i class="fas fa-rocket text-white text-sm"></i>
+                </div>
+                <h5 class="text-blue-800 font-medium">一键式搜索</h5>
+              </div>
+              <p class="text-blue-700 text-xs">智能侧边栏 | 11+ 内置语法 | 自定义语法 | 多引擎支持</p>
+            </div>
+
+            <!-- URL批量提取 -->
+            <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-4 border border-purple-200">
+              <div class="flex items-center mb-2">
+                <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center mr-2">
+                  <i class="fas fa-link text-white text-sm"></i>
+                </div>
+                <h5 class="text-purple-800 font-medium">URL批量提取</h5>
+              </div>
+              <p class="text-purple-700 text-xs">一键提取 | 智能过滤 | 批量复制 | 黑名单支持</p>
+            </div>
+
+            <!-- 安全隐私 -->
+            <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-4 border border-green-200">
+              <div class="flex items-center mb-2">
+                <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-2">
+                  <i class="fas fa-shield-alt text-white text-sm"></i>
+                </div>
+                <h5 class="text-green-800 font-medium">安全隐私</h5>
+              </div>
+              <p class="text-green-700 text-xs">本地存储 | 零追踪 | 开源透明 | 最小权限</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 适用场景 -->
+        <div class="mb-6 pb-6 border-b">
+          <h4 class="text-lg font-medium text-gray-800 mb-3">📊 适用场景</h4>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 bg-blue-100 text-blue-800 rounded-full text-sm">
+              <i class="fas fa-search mr-1"></i>安全研究
+            </span>
+            <span class="px-3 py-1.5 bg-green-100 text-green-800 rounded-full text-sm">
+              <i class="fas fa-bug mr-1"></i>渗透测试
+            </span>
+            <span class="px-3 py-1.5 bg-purple-100 text-purple-800 rounded-full text-sm">
+              <i class="fas fa-graduation-cap mr-1"></i>安全教育
+            </span>
+            <span class="px-3 py-1.5 bg-orange-100 text-orange-800 rounded-full text-sm">
+              <i class="fas fa-shield-alt mr-1"></i>威胁情报
+            </span>
+            <span class="px-3 py-1.5 bg-indigo-100 text-indigo-800 rounded-full text-sm">
+              <i class="fas fa-user-secret mr-1"></i>漏洞挖掘
+            </span>
+          </div>
+        </div>
+
+        <!-- 内置语法库 -->
+        <div class="mb-6 pb-6 border-b">
+          <h4 class="text-lg font-medium text-gray-800 mb-4">🛡️ 内置语法库</h4>
+          
+          <!-- 通用语法 -->
+          <div class="mb-4">
+            <h5 class="font-medium text-gray-700 mb-2 flex items-center">
+              <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded mr-2">通用</span>
+              所有搜索引擎支持
+            </h5>
+            <div class="grid md:grid-cols-2 gap-3">
+              <div class="bg-gray-50 p-3 rounded border">
+                <div class="flex justify-between items-center">
+                  <span class="font-medium text-gray-800">文档文件</span>
+                  <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded">信息</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-1">查找PDF、DOC、PPT等常见文档</p>
+              </div>
+              <div class="bg-gray-50 p-3 rounded border">
+                <div class="flex justify-between items-center">
+                  <span class="font-medium text-gray-800">配置文件</span>
+                  <span class="bg-red-100 text-red-800 text-xs px-2 py-0.5 rounded">高风险</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-1">查找XML、INI、ENV等配置文件</p>
+              </div>
+              <div class="bg-gray-50 p-3 rounded border">
+                <div class="flex justify-between items-center">
+                  <span class="font-medium text-gray-800">备份文件</span>
+                  <span class="bg-red-100 text-red-800 text-xs px-2 py-0.5 rounded">高风险</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-1">发现SQL、BAK等备份文件</p>
+              </div>
+              <div class="bg-gray-50 p-3 rounded border">
+                <div class="flex justify-between items-center">
+                  <span class="font-medium text-gray-800">登录页面</span>
+                  <span class="bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded">低风险</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-1">发现登录和管理入口</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Google语法 -->
+          <div class="mb-4">
+            <h5 class="font-medium text-gray-700 mb-2 flex items-center">
+              <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mr-2">Google</span>
+              Google搜索专用
+            </h5>
+            <div class="grid md:grid-cols-3 gap-3">
+              <div class="bg-blue-50 p-3 rounded border border-blue-200">
+                <div class="flex justify-between items-center">
+                  <span class="font-medium text-blue-800">目录列表</span>
+                  <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-0.5 rounded">中风险</span>
+                </div>
+                <p class="text-blue-600 text-sm mt-1">利用Google的intitle优势发现目录遍历</p>
+              </div>
+              <div class="bg-blue-50 p-3 rounded border border-blue-200">
+                <div class="flex justify-between items-center">
+                  <span class="font-medium text-blue-800">错误信息</span>
+                  <span class="bg-red-100 text-red-800 text-xs px-2 py-0.5 rounded">高风险</span>
+                </div>
+                <p class="text-blue-600 text-sm mt-1">查找各类程序错误信息</p>
+              </div>
+              <div class="bg-blue-50 p-3 rounded border border-blue-200">
+                <div class="flex justify-between items-center">
+                  <span class="font-medium text-blue-800">PHP信息</span>
+                  <span class="bg-red-100 text-red-800 text-xs px-2 py-0.5 rounded">高风险</span>
+                </div>
+                <p class="text-blue-600 text-sm mt-1">发现phpinfo页面泄露</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 百度语法 -->
+          <div class="mb-4">
+            <h5 class="font-medium text-gray-700 mb-2 flex items-center">
+              <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded mr-2">百度</span>
+              百度搜索专用
+            </h5>
+            <div class="grid md:grid-cols-2 gap-3">
+              <div class="bg-red-50 p-3 rounded border border-red-200">
+                <div class="flex justify-between items-center">
+                  <span class="font-medium text-red-800">中文敏感信息</span>
+                  <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-0.5 rounded">中风险</span>
+                </div>
+                <p class="text-red-600 text-sm mt-1">针对中文环境的敏感信息搜索</p>
+              </div>
+              <div class="bg-red-50 p-3 rounded border border-red-200">
+                <div class="flex justify-between items-center">
+                  <span class="font-medium text-red-800">日志文件</span>
+                  <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-0.5 rounded">中风险</span>
+                </div>
+                <p class="text-red-600 text-sm mt-1">查找日志文件泄露</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bing语法 -->
+          <div class="mb-4">
+            <h5 class="font-medium text-gray-700 mb-2 flex items-center">
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded mr-2">Bing</span>
+              Bing搜索专用
+            </h5>
+            <div class="grid md:grid-cols-2 gap-3">
+              <div class="bg-green-50 p-3 rounded border border-green-200">
+                <div class="flex justify-between items-center">
+                  <span class="font-medium text-green-800">文档内容搜索</span>
+                  <span class="bg-red-100 text-red-800 text-xs px-2 py-0.5 rounded">高风险</span>
+                </div>
+                <p class="text-green-600 text-sm mt-1">利用contains语法深度搜索文档内容</p>
+              </div>
+              <div class="bg-green-50 p-3 rounded border border-green-200">
+                <div class="flex justify-between items-center">
+                  <span class="font-medium text-green-800">API文档</span>
+                  <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-0.5 rounded">中风险</span>
+                </div>
+                <p class="text-green-600 text-sm mt-1">查找API文档和接口信息</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 注意事项 -->
+        <div class="mb-6 pb-6 border-b">
+          <h4 class="text-lg font-medium text-gray-800 mb-3">⚠️ 注意事项</h4>
+          <div class="bg-yellow-50 rounded-lg p-4 border border-yellow-200">
+            <h5 class="text-yellow-800 font-medium mb-2 flex items-center">
+              <i class="fas fa-exclamation-triangle mr-2"></i>搜索引擎语法差异
+            </h5>
+            <div class="text-yellow-700 text-sm space-y-2">
+              <p>虽然本扩展同时支持Google、百度和Bing搜索引擎，但请注意三者的搜索语法存在一些差异：</p>
+              <ul class="list-disc ml-4 space-y-1">
+                <li><strong>语法兼容性</strong>：某些高级搜索语法在Google上有效，但在百度或Bing上可能无效，反之亦然</li>
+                <li><strong>搜索结果差异</strong>：即使使用相同的语法，三个搜索引擎返回的结果也可能有显著差异</li>
+                <li><strong>语法组合限制</strong>：百度和Bing对复杂语法组合的支持可能不如Google完善</li>
+              </ul>
+              <p class="mt-2">建议根据目标和需求选择合适的搜索引擎，并针对不同搜索引擎调整语法。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 免责声明 -->
+        <div class="bg-red-50 rounded-lg p-4 border border-red-200">
+          <h5 class="text-red-800 font-medium mb-2 flex items-center">
+            <i class="fas fa-exclamation-triangle mr-2"></i>免责声明
+          </h5>
+          <p class="text-red-700 text-sm">
+            本工具仅供合法的安全研究和授权渗透测试使用。用户需遵守当地法律法规，不得用于任何非法活动。开发者不承担因误用本工具而产生的任何法律责任。
+          </p>
+        </div>
+      </div>
+      
+      <!-- 开发者信息 -->
+      <div class="glass-card rounded-xl p-6 mb-6">
+        <h3 class="text-lg font-medium text-gray-800 mb-4">👨‍💻 开发者信息</h3>
+        
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 rounded-full overflow-hidden mr-4 border-2 border-gray-200">
+            <img src="https://github.com/dollmarker.png" alt="dollmarker" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <h4 class="font-medium text-gray-800">dollmarker</h4>
+            <p class="text-gray-600 text-sm">安全研究员</p>
+          </div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+            <i class="fab fa-github text-gray-600 text-lg mr-3"></i>
+            <div>
+              <p class="font-medium text-gray-800">GitHub</p>
+              <a href="https://github.com/dollmarker/" target="_blank" class="text-blue-600 hover:underline text-sm">@dollmarker</a>
+            </div>
+          </div>
+          
+          <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+            <i class="fas fa-code-branch text-gray-600 text-lg mr-3"></i>
+            <div>
+              <p class="font-medium text-gray-800">项目仓库</p>
+              <a href="#" id="aboutGithubLink" target="_blank" class="text-blue-600 hover:underline text-sm">GitHub Repository</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+          <h5 class="text-blue-800 font-medium mb-2">🔒 隐私政策</h5>
+          <p class="text-blue-700 text-sm">
+            crazyedusrc 不会收集或上传任何个人数据。所有设置和自定义语法只存储在您的浏览器本地存储中。扩展不会追踪您的搜索历史或浏览活动。
+          </p>
+        </div>
+      </div>
+      
+      <!-- 更新日志 -->
+      <div class="glass-card rounded-xl p-6">
+        <h3 class="text-lg font-medium text-gray-800 mb-4">📝 更新日志</h3>
+        
+        <div class="space-y-6">
+          <!-- v1.0 -->
+          <div class="border-l-4 border-blue-500 pl-4">
+            <h4 class="font-medium text-gray-800 mb-2 flex items-center">
+              <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded mr-2">v1.0</span>
+              <span>crazyedusrc 首次发布</span>
+              <span class="text-gray-500 text-sm ml-auto">2026年9月10日</span>
+            </h4>
+            <ul class="list-disc pl-5 text-gray-600 space-y-1 text-sm">
+              <li><strong>Edu 专用语法库</strong>：40+ 条面向教育行业的猎洞语法，覆盖敏感文档、个人信息、后台入口、统一认证、组件指纹、配置泄露、目录遍历等攻击面</li>
+              <li><strong>攻击面分类分组</strong>：侧边栏语法按钮按攻击面自动分组显示，猎洞思路一目了然</li>
+              <li><strong>资产测绘联动</strong>：一键将当前 site 目标转为 Fofa / 360 Quake / 鹰图 Hunter / ZoomEye 查询并跳转</li>
+              <li><strong>一键跑高危</strong>：按当前域名批量执行全部高危语法，多标签页并发侦察</li>
+              <li><strong>Edu 全局跨校猎洞</strong>：对全量 edu.cn 资产执行高危语法，发现批量化的同组件漏洞</li>
+              <li><strong>敏感 URL 高亮</strong>：自动识别数据库/备份/配置/版本控制/后台等 8 类敏感特征并打标</li>
+              <li><strong>问题修复</strong>：修复编辑内置语法后被降级为自定义语法的问题</li>
+              <li>本工具基于开源项目二次开发，原工具：<a href="https://github.com/Pa55w0rd/google-hacking-assistant" target="_blank" class="text-blue-600 hover:underline">google-hacking-assistant</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mt-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
+          <div class="flex items-center justify-between">
+            <div>
+              <h5 class="text-blue-800 font-medium mb-1">🚀 持续更新中</h5>
+              <p class="text-blue-700 text-sm">我们会持续改进产品，为安全研究社区提供更好的工具支持</p>
+            </div>
+            <div class="text-right">
+              <a href="#" id="starProjectLink" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-lg transition-colors inline-flex items-center">
+                <i class="fas fa-star mr-2"></i>关注更新
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </main>
+  </div>
+  
+  <!-- 滚动进度条 -->
+  <div class="scroll-progress-container">
+    <div class="scroll-progress-bar" id="scrollProgress"></div>
+  </div>
+  
+  <!-- 回到顶部按钮 -->
+  <button class="back-to-top" id="backToTop" aria-label="回到顶部" title="回到顶部">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  
+  <!-- 模态窗口 - Star项目引导 -->
+  <div id="starProjectModal" class="modal-overlay">
+    <div class="modal-container max-w-md">
+      <div class="modal-header">
+        <div class="modal-icon success">
+          <i class="fas fa-star"></i>
+        </div>
+        <h3 class="text-lg font-medium">支持项目发展</h3>
+      </div>
+      <div class="modal-body text-center">
+        <p class="text-gray-600 mb-4">如果这个工具对您有帮助，请考虑给项目一个Star ⭐</p>
+        <div class="bg-blue-50 rounded-lg p-4 mb-4">
+          <div class="flex items-center justify-center mb-2">
+            <img src="https://github.com/dollmarker.png" alt="dollmarker" class="w-8 h-8 rounded-full mr-2">
+            <span class="font-medium text-blue-800">dollmarker/crazy_edusrc</span>
+          </div>
+          <p class="text-blue-700 text-sm">您的支持是我们持续改进的动力</p>
+        </div>
+        <div class="text-sm text-gray-500">
+          <p>点击下方按钮将跳转到GitHub仓库</p>
+          <p>在页面右上角找到Star按钮并点击即可</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn modal-btn-cancel" data-action="close">稍后再说</button>
+        <button class="modal-btn modal-btn-confirm" id="confirmStarBtn">
+          <i class="fas fa-star mr-2"></i>去Star项目
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 模态窗口 - 重置设置 -->
+  <div id="resetModal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div class="modal-icon danger">
+          <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <h3 class="text-lg font-medium">重置所有设置</h3>
+      </div>
+      <div class="modal-body">
+        <p class="text-gray-600">此操作将会清除所有自定义语法和设置，恢复到扩展的初始状态。此操作<span class="font-semibold text-red-600">不可撤销</span>，确定要继续吗？</p>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn modal-btn-cancel" data-action="close">取消</button>
+        <button class="modal-btn modal-btn-confirm" data-action="reset-settings">确定重置</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 模态窗口 - 删除单个语法 -->
+  <div id="deleteSyntaxModal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div class="modal-icon warning">
+          <i class="fas fa-trash-alt"></i>
+        </div>
+        <h3 class="text-lg font-medium">删除语法</h3>
+      </div>
+      <div class="modal-body">
+        <p class="text-gray-600">确定要删除语法 "<span id="syntaxToDelete" class="font-medium"></span>" 吗？此操作不可撤销。</p>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn modal-btn-cancel" data-action="close">取消</button>
+        <button class="modal-btn modal-btn-confirm" data-action="delete-syntax">确定删除</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 模态窗口 - 清除所有自定义语法 -->
+  <div id="clearAllSyntaxModal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div class="modal-icon danger">
+          <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <h3 class="text-lg font-medium">清除所有自定义语法</h3>
+      </div>
+      <div class="modal-body">
+        <p class="text-gray-600">此操作将会删除所有自定义语法。内置语法不会受到影响。此操作<span class="font-semibold text-red-600">不可撤销</span>，确定要继续吗？</p>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn modal-btn-cancel" data-action="close">取消</button>
+        <button class="modal-btn modal-btn-confirm" data-action="clear-all-syntax">确定清除</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 模态窗口 - 导入确认 -->
+  <div id="importConfirmModal" class="modal-overlay">
+    <div class="modal-container" style="max-width: 800px; width: 95%;">
+      <div class="modal-header">
+        <div class="modal-icon warning">
+          <i class="fas fa-file-import"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-medium text-gray-900">确认导入配置</h3>
+          <p class="text-sm text-gray-500 mt-1">请仔细检查导入内容，确认后将应用到当前配置</p>
+        </div>
+      </div>
+      
+      <div class="modal-body">
+        <!-- 导入概览 -->
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+          <div class="flex items-start">
+            <i class="fas fa-info-circle text-blue-600 mt-1 mr-3"></i>
+            <div>
+              <h4 class="text-blue-800 font-medium mb-2">📋 导入概览</h4>
+              <div id="importOverview" class="text-blue-700 text-sm space-y-1">
+                <!-- 动态内容 -->
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 内置语法保护说明 -->
+        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+          <div class="flex items-start">
+            <i class="fas fa-shield-alt text-yellow-600 mt-1 mr-3"></i>
+            <div>
+              <h4 class="text-yellow-800 font-medium mb-2">🛡️ 内置语法保护</h4>
+              <div class="text-yellow-700 text-sm space-y-1">
+                <p>• 内置语法的内容和条数不会被修改，确保扩展核心功能稳定</p>
+                <p>• 仅会更新内置语法的启用/禁用状态和搜索引擎设置</p>
+                <p id="builtinSyntaxInfo">• 发现 <span class="font-medium">0</span> 条内置语法，将更新其开关状态</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 自定义语法处理选项 -->
+        <div class="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
+          <div class="flex items-start">
+            <i class="fas fa-cogs text-orange-600 mt-1 mr-3"></i>
+            <div>
+              <h4 class="text-orange-800 font-medium mb-3">⚙️ 自定义语法处理方式</h4>
+              <div class="space-y-3">
+                <label class="flex items-start cursor-pointer">
+                  <input type="radio" name="customSyntaxMode" value="append" class="mt-1 mr-3" checked>
+                  <div>
+                    <div class="text-orange-800 font-medium">追加模式（推荐）</div>
+                    <div class="text-orange-700 text-sm">保留现有自定义语法，添加新的语法（如有重复ID则跳过）</div>
+                  </div>
+                </label>
+                <label class="flex items-start cursor-pointer">
+                  <input type="radio" name="customSyntaxMode" value="replace" class="mt-1 mr-3">
+                  <div>
+                    <div class="text-orange-800 font-medium">覆盖模式</div>
+                    <div class="text-orange-700 text-sm">删除所有现有自定义语法，使用导入的语法完全替换</div>
+                  </div>
+                </label>
+              </div>
+              <div id="customSyntaxInfo" class="mt-3 text-orange-700 text-sm">
+                <!-- 动态内容 -->
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 重要提醒 -->
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+          <div class="flex items-start">
+            <i class="fas fa-exclamation-triangle text-red-600 mt-1 mr-3"></i>
+            <div>
+              <h4 class="text-red-800 font-medium mb-2">⚠️ 重要提醒</h4>
+              <div class="text-red-700 text-sm space-y-1">
+                <p>• 导入操作将修改当前配置，建议先导出备份当前配置</p>
+                <p>• 基本设置（侧边栏开关、搜索引擎设置、URL黑名单）将被覆盖</p>
+                <p>• 此操作不可撤销，请确认后再继续</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <button class="modal-btn modal-btn-cancel" data-action="close">取消导入</button>
+        <button class="modal-btn modal-btn-confirm" id="confirmImportBtn" data-action="confirm-import">
+          <i class="fas fa-file-import mr-2"></i>确认导入
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 模态窗口 - 添加/编辑语法 -->
+  <div id="syntaxFormModal" class="modal-overlay">
+    <div class="syntax-modal-container modal-container">
+      <!-- 对话框标题 -->
+      <div class="gradient-header text-white py-4 px-6 flex justify-between items-center">
+        <h2 class="text-xl font-medium" id="syntaxFormTitle">添加自定义语法</h2>
+        <button class="text-white hover:text-gray-200 transition-colors" data-action="close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <!-- 对话框内容 -->
+      <div class="p-6 bg-white rounded-b-xl">
+        <div class="flex flex-col lg:flex-row lg:space-x-6">
+          <div class="flex-grow lg:w-3/5">
+            <form id="syntaxForm">
+              <input type="hidden" id="syntaxId" value="">
+              
+              <!-- 表单错误通知区域 -->
+              <div id="formError" class="mb-4 rounded-lg p-4 border text-sm hidden">
+                <i class="fas fa-exclamation-circle mr-2"></i>
+                <span id="formErrorMessage"></span>
+              </div>
+              
+              <!-- 名称字段 -->
+              <div class="mb-6">
+                <label for="syntaxName" class="block text-gray-700 font-medium mb-2">语法名称</label>
+                <input type="text" id="syntaxName" class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow text-base" placeholder="例如: PDF文件搜索" required>
+                <div class="mt-2 text-xs text-gray-500">
+                  <i class="fas fa-info-circle mr-1"></i>
+                  语法名称不能与已有语法重复
+                </div>
+              </div>
+              
+              <!-- 语法字段 -->
+              <div class="mb-6">
+                <div class="flex justify-between items-center mb-2">
+                  <label for="syntaxContent" class="block text-gray-700 font-medium">搜索语法</label>
+                  <div class="syntax-example text-blue-600 text-sm">
+                    <i class="fas fa-info-circle mr-1"></i> 查看示例
+                    <div class="syntax-example-content">
+                      <div class="mb-2 font-medium">语法示例：</div>
+                      <div class="mb-1">site:{target_domain} intitle:index.of</div>
+                      <div class="mb-1">site:{target_domain} filetype:pdf</div>
+                      <div class="mb-1">site:{target_domain} inurl:admin</div>
+                      <div class="text-xs opacity-80 mt-2">使用 {target_domain} 占位符表示搜索目标域名</div>
+                    </div>
+                  </div>
+                </div>
+                <textarea id="syntaxContent" class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-shadow font-mono text-sm" rows="4" placeholder="例如: site:{target_domain} filetype:pdf" required></textarea>
+                <div class="mt-2 text-xs text-gray-500">
+                  <i class="fas fa-info-circle mr-1"></i>
+                  必须包含 <code class="px-1.5 py-0.5 bg-gray-100 rounded text-red-600">site:{target_domain}</code> 占位符
+                </div>
+              </div>
+              
+              <!-- 风险等级 -->
+              <div class="mb-6">
+                <label class="block text-gray-700 font-medium mb-2">风险等级</label>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <label class="radio-container border border-gray-200 rounded-lg p-3 bg-blue-50 border-blue-200 cursor-pointer">
+                    <input type="radio" name="riskLevel" value="info" checked>
+                    <div class="flex items-start">
+                      <div class="custom-radio mr-2 mt-0.5"></div>
+                      <div>
+                        <div class="text-gray-800 font-medium text-sm">信息</div>
+                        <div class="text-xs text-gray-500">低敏感度信息</div>
+                      </div>
+                    </div>
+                  </label>
+                  
+                  <label class="radio-container border border-gray-200 rounded-lg p-3 bg-green-50 border-green-200 cursor-pointer">
+                    <input type="radio" name="riskLevel" value="low">
+                    <div class="flex items-start">
+                      <div class="custom-radio mr-2 mt-0.5"></div>
+                      <div>
+                        <div class="text-gray-800 font-medium text-sm">低风险</div>
+                        <div class="text-xs text-gray-500">一般敏感信息</div>
+                      </div>
+                    </div>
+                  </label>
+                  
+                  <label class="radio-container border border-gray-200 rounded-lg p-3 bg-yellow-50 border-yellow-200 cursor-pointer">
+                    <input type="radio" name="riskLevel" value="medium">
+                    <div class="flex items-start">
+                      <div class="custom-radio mr-2 mt-0.5"></div>
+                      <div>
+                        <div class="text-gray-800 font-medium text-sm">中风险</div>
+                        <div class="text-xs text-gray-500">较敏感信息</div>
+                      </div>
+                    </div>
+                  </label>
+                  
+                  <label class="radio-container border border-gray-200 rounded-lg p-3 bg-red-50 border-red-200 cursor-pointer">
+                    <input type="radio" name="riskLevel" value="high">
+                    <div class="flex items-start">
+                      <div class="custom-radio mr-2 mt-0.5"></div>
+                      <div>
+                        <div class="text-gray-800 font-medium text-sm">高风险</div>
+                        <div class="text-xs text-gray-500">高敏感信息</div>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+              
+              <!-- 搜索引擎支持 -->
+              <div class="mb-6">
+                <label class="block text-gray-700 font-medium mb-3">搜索引擎支持</label>
+                <div class="flex flex-wrap gap-3">
+                  <label class="flex items-center">
+                    <input type="checkbox" id="engineGoogle" class="form-checkbox text-blue-600 rounded w-5 h-5" checked>
+                    <span class="ml-2 text-gray-700">Google</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input type="checkbox" id="engineBaidu" class="form-checkbox text-blue-600 rounded w-5 h-5">
+                    <span class="ml-2 text-gray-700">百度</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input type="checkbox" id="engineBing" class="form-checkbox text-blue-600 rounded w-5 h-5">
+                    <span class="ml-2 text-gray-700">Bing</span>
+                  </label>
+                </div>
+                <p class="text-sm text-gray-500 mt-1">选择此语法支持的搜索引擎，语法仅在选中的搜索引擎结果页显示</p>
+                <p class="text-sm text-gray-500 mt-1">注意：不同搜索引擎的语法存在一定差异，语法可能不完全兼容</p>
+              </div>
+              
+              <!-- 启用状态 -->
+              <div class="mb-6">
+                <label class="block text-gray-700 font-medium mb-3">语法状态</label>
+                <div class="flex items-center gap-3">
+                  <label class="radio-container border border-gray-200 rounded-lg p-3 cursor-pointer flex-1">
+                    <input type="radio" name="syntaxStatus" value="enabled" checked>
+                    <div class="flex items-start">
+                      <div class="custom-radio mr-2 mt-0.5"></div>
+                      <div>
+                        <div class="text-gray-800 font-medium text-sm">启用</div>
+                        <div class="text-xs text-gray-500">语法将在搜索结果页显示</div>
+                      </div>
+                    </div>
+                  </label>
+                  
+                  <label class="radio-container border border-gray-200 rounded-lg p-3 cursor-pointer flex-1">
+                    <input type="radio" name="syntaxStatus" value="disabled">
+                    <div class="flex items-start">
+                      <div class="custom-radio mr-2 mt-0.5"></div>
+                      <div>
+                        <div class="text-gray-800 font-medium text-sm">禁用</div>
+                        <div class="text-xs text-gray-500">语法不会显示，但保留配置</div>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+              
+              <!-- 测试按钮 -->
+              <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 flex items-start">
+                <i class="fas fa-flask text-blue-600 mt-1 mr-3"></i>
+                <div>
+                  <h4 class="text-blue-800 font-medium mb-1">测试语法</h4>
+                  <p class="text-blue-700 text-sm mb-3">您可以在添加前测试此语法，检查是否能返回预期结果</p>
+                  <button type="button" id="testSyntaxBtn" class="bg-white border border-blue-300 text-blue-600 hover:bg-blue-50 font-medium py-1.5 px-4 rounded-lg text-sm transition-colors flex items-center">
+                    <i class="fas fa-external-link-alt mr-2"></i> 测试语法
+                  </button>
+                </div>
+              </div>
+              
+              <!-- 操作按钮 -->
+              <div class="flex justify-end space-x-3 border-t pt-5">
+                <button type="button" id="cancelSyntaxDialog" class="modal-btn modal-btn-cancel" data-action="close">
+                  取消
+                </button>
+                <button type="button" id="saveSyntax" class="modal-btn modal-btn-confirm flex items-center">
+                  <i class="fas fa-plus mr-2" id="syntaxBtnIcon"></i> <span id="syntaxBtnText">添加语法</span>
+                </button>
+              </div>
+            </form>
+          </div>
+          
+          <!-- 常用Hacking语法参考 - 内嵌在模态窗口中 -->
+          <div class="lg:w-2/5 mt-6 lg:mt-0 bg-gray-50 p-4 rounded-lg">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="font-medium text-gray-800">常用Hacking语法参考</h3>
+            </div>
+            <div class="text-sm text-gray-600 mb-3">
+              <p>以下是一些常用的Google Hacking语法，可以帮助您创建自定义语法：</p>
+            </div>
+            <div class="space-y-2 text-sm mb-3">
+              <div class="bg-white p-2 rounded border border-gray-100">
+                <span class="font-mono text-blue-600">site:</span> 限定搜索特定域名
+              </div>
+              <div class="bg-white p-2 rounded border border-gray-100">
+                <span class="font-mono text-blue-600">filetype:</span> 限定文件类型
+              </div>
+              <div class="bg-white p-2 rounded border border-gray-100">
+                <span class="font-mono text-blue-600">intitle:</span> 限定标题包含内容
+              </div>
+              <div class="bg-white p-2 rounded border border-gray-100">
+                <span class="font-mono text-blue-600">inurl:</span> 限定URL包含内容
+              </div>
+              <div class="bg-white p-2 rounded border border-gray-100">
+                <span class="font-mono text-blue-600">intext:</span> 限定页面文本内容
+              </div>
+            </div>
+            <div class="text-center">
+              <a href="https://www.exploit-db.com/google-hacking-database" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center justify-center">
+                <i class="fas fa-external-link-alt mr-1"></i> 访问GHDB获取更多示例
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<script src="js/options.js"></script>
+</body>
+</html> 

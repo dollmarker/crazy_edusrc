@@ -1,0 +1,30 @@
+/* Google搜索侧边栏样式 */
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* Google特有的布局调整 */
+#rhs {
+  min-width: 340px !important;
+  margin-left: 20px !important;
+}
+
+/* 修复Google搜索页面上可能的布局问题 */
+#center_col, #main {
+  width: auto !important;
+  flex: 1 !important;
+}
+
+/* Google特有的响应式样式 */
+@media (max-width: 1200px) {
+  #rhs {
+    min-width: 320px !important;
+  }
+}
+
+@media (max-width: 1000px) {
+  #rhs {
+    min-width: 300px !important;
+  }
+} 

@@ -1,0 +1,731 @@
+/* iOS 16 Style - Options Page */
+
+/* 全局样式 */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  background-color: #F2F2F7;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+}
+
+/* 标题字体 */
+h1 {
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.03em;
+  color: #000000;
+}
+
+h2 {
+  font-size: 22px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em;
+  color: #000000;
+}
+
+h3 {
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  color: #000000;
+}
+
+h4 {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: #000000;
+}
+
+/* 正文文本 */
+p, div, span, label {
+  font-size: 15px !important;
+  color: #000000;
+}
+
+/* 小号文本 */
+.text-sm {
+  font-size: 13px !important;
+  color: #8E8E93;
+}
+
+.text-xs {
+  font-size: 12px !important;
+  color: #8E8E93;
+}
+
+/* 容器 */
+.container {
+  background-color: #F2F2F7 !important;
+  max-width: 100% !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+}
+
+/* 卡片 - 扁平白色 */
+.glass-card {
+  background: #FFFFFF !important;
+  border: 0.5px solid #E5E5EA !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+/* 导航栏 */
+.gradient-bg {
+  background: #FFFFFF !important;
+  border-bottom: 0.5px solid #E5E5EA;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+}
+
+.gradient-bg, .gradient-header {
+  background: #FFFFFF !important;
+}
+
+/* 标签页导航栏固定 */
+.bg-white.border-b {
+  position: sticky !important;
+  top: 73px !important; /* 顶部导航栏高度 */
+  z-index: 999 !important;
+  background: #FFFFFF !important;
+}
+
+/* 标签页 */
+.tab-active {
+  color: #007AFF !important;
+  border-bottom: 2px solid #007AFF !important;
+  font-weight: 600 !important;
+}
+
+/* iOS风格开关 */
+.toggle-switch {
+  width: 51px;
+  height: 31px;
+  border-radius: 16px;
+  background-color: #E5E5EA;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  border: none;
+}
+
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.toggle-switch.active {
+  background-color: #34C759;
+}
+
+.toggle-switch.active::after {
+  transform: translateX(20px);
+}
+
+/* 语法项 - iOS扁平卡片 */
+.syntax-item {
+  background: #FFFFFF;
+  border: 0.5px solid #E5E5EA;
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+.syntax-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.syntax-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.syntax-item-title {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.syntax-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #000000;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.syntax-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.syntax-item-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.syntax-template {
+  font-family: "SF Mono", "Monaco", "Menlo", "Courier New", monospace;
+  font-size: 13px;
+  color: #3C3C43;
+  line-height: 1.5;
+  background: #F2F2F7;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+}
+
+/* 风险标签 - iOS徽章风格 */
+.risk-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.risk-badge-info {
+  background: #E3F2FD !important;
+  color: #007AFF !important;
+}
+
+.risk-badge-low {
+  background: #E8F5E9 !important;
+  color: #34C759 !important;
+}
+
+.risk-badge-medium {
+  background: #FFF3E0 !important;
+  color: #FF9500 !important;
+}
+
+.risk-badge-high {
+  background: #FFEBEE !important;
+  color: #FF3B30 !important;
+}
+
+/* 搜索引擎标签 */
+.syntax-engines {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.engine-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.engine-badge i {
+  font-size: 12px;
+}
+
+.engine-badge-google {
+  background: #E3F2FD;
+  color: #007AFF;
+}
+
+.engine-badge-baidu {
+  background: #E3F2FD;
+  color: #007AFF;
+}
+
+.engine-badge-bing {
+  background: #E8F5E9;
+  color: #34C759;
+}
+
+/* 图标按钮 - iOS风格 */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #F2F2F7;
+  color: #8E8E93;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.icon-btn:hover {
+  background-color: #E5E5EA;
+  color: #000000;
+}
+
+.icon-btn:active {
+  transform: scale(0.95);
+}
+
+.edit-btn:hover {
+  background-color: #E3F2FD;
+  color: #007AFF;
+}
+
+.delete-btn:hover {
+  background-color: #FFEBEE;
+  color: #FF3B30;
+}
+
+/* 按钮 - iOS扁平风格 */
+.bg-blue-600, button.bg-blue-600 {
+  background: #007AFF !important;
+  color: #FFFFFF !important;
+  border-radius: 10px !important;
+  padding: 11px 20px !important;
+  font-weight: 600 !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.bg-blue-600:hover, button.bg-blue-600:hover {
+  background: #0051D5 !important;
+  transform: translateY(0) !important;
+}
+
+.bg-blue-600:active {
+  transform: scale(0.98) !important;
+}
+
+.bg-green-600 {
+  background: #34C759 !important;
+  color: #FFFFFF !important;
+  border-radius: 10px !important;
+  padding: 11px 20px !important;
+  font-weight: 600 !important;
+  border: none !important;
+}
+
+.bg-red-600 {
+  background: #FF3B30 !important;
+  color: #FFFFFF !important;
+  border-radius: 10px !important;
+  padding: 11px 20px !important;
+  font-weight: 600 !important;
+  border: none !important;
+}
+
+.btn-effect:hover {
+  transform: translateY(0) !important;
+  box-shadow: none !important;
+}
+
+.btn-effect:active {
+  transform: scale(0.98) !important;
+}
+
+/* 表单元素 */
+input, textarea, select {
+  background-color: #FFFFFF !important;
+  border: 0.5px solid #E5E5EA !important;
+  color: #000000 !important;
+  border-radius: 10px !important;
+  padding: 10px 14px !important;
+  font-size: 15px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+  transition: all 0.2s ease !important;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #007AFF !important;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1) !important;
+  outline: none !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #C7C7CC !important;
+}
+
+/* 单选按钮容器 - iOS风格 */
+.radio-container {
+  border: 0.5px solid #E5E5EA;
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+/* 默认背景色（如果没有Tailwind类） */
+.radio-container:not([class*="bg-"]) {
+  background: #F2F2F7;
+}
+
+.radio-container:hover {
+  filter: brightness(0.97);
+}
+
+/* 隐藏原生单选框但保持可访问性 */
+.radio-container input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.custom-radio {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #C7C7CC;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.custom-radio::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #007AFF;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+/* 选中状态 */
+.radio-container:has(input[type="radio"]:checked) .custom-radio {
+  border-color: #007AFF;
+}
+
+.radio-container:has(input[type="radio"]:checked) .custom-radio::after {
+  opacity: 1;
+}
+
+/* 复选框 */
+input[type="checkbox"] {
+  accent-color: #007AFF !important;
+}
+
+/* 模态框 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  display: none; /* 默认隐藏 */
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+/* 显示模态框 */
+.modal-overlay.show,
+.modal-overlay[style*="display: flex"],
+.modal-overlay[style*="display:flex"] {
+  display: flex !important;
+}
+
+.modal-container {
+  background-color: #FFFFFF;
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  padding: 20px 24px;
+  border-bottom: 0.5px solid #E5E5EA;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-body {
+  padding: 24px;
+}
+
+.modal-footer {
+  padding: 16px 24px;
+  background-color: #F2F2F7;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: 0.5px solid #E5E5EA;
+}
+
+.modal-btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.modal-btn-cancel {
+  background-color: #E5E5EA !important;
+  color: #000000 !important;
+}
+
+.modal-btn-cancel:hover {
+  background-color: #D1D1D6 !important;
+}
+
+.modal-btn-confirm {
+  background-color: #007AFF !important;
+  color: #FFFFFF !important;
+}
+
+.modal-btn-confirm:hover {
+  background-color: #0051D5 !important;
+}
+
+/* 确保按钮内所有元素文字都是白色 - 最高优先级 */
+button.modal-btn-confirm,
+button.modal-btn-confirm *,
+button.modal-btn-confirm span,
+button.modal-btn-confirm i,
+.modal-btn.modal-btn-confirm,
+.modal-btn.modal-btn-confirm *,
+.modal-btn.modal-btn-confirm span,
+.modal-btn.modal-btn-confirm i {
+  color: #FFFFFF !important;
+}
+
+/* 取消按钮黑色文字 - 最高优先级 */
+button.modal-btn-cancel,
+button.modal-btn-cancel *,
+button.modal-btn-cancel span,
+button.modal-btn-cancel i,
+.modal-btn.modal-btn-cancel,
+.modal-btn.modal-btn-cancel *,
+.modal-btn.modal-btn-cancel span,
+.modal-btn.modal-btn-cancel i {
+  color: #000000 !important;
+}
+
+/* 语法示例提示 */
+.syntax-example {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.syntax-example-content {
+  visibility: hidden;
+  position: absolute;
+  z-index: 1000;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  background-color: #FFFFFF; /* 浅色模式默认使用白底 */
+  color: #000000; /* 提升浅色模式可读性 */
+  text-align: left;
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  opacity: 0;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  font-size: 13px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* 添加小三角指示器 */
+.syntax-example-content::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #FFFFFF; /* 与浅色模式提示框背景一致 */
+}
+
+.syntax-example:hover .syntax-example-content {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* 通知 - 顶部居中悬浮 */
+.notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FFFFFF;
+  color: #000000;
+  border: 0.5px solid #E5E5EA;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 500;
+  z-index: 100000;
+  min-width: 200px;
+  text-align: center;
+  animation: notificationSlideDown 0.3s ease;
+}
+
+@keyframes notificationSlideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.notification-success {
+  border-left: 4px solid #34C759;
+}
+
+.notification-error {
+  border-left: 4px solid #FF3B30;
+}
+
+.notification-info {
+  border-left: 4px solid #007AFF;
+}
+
+/* 徽章 */
+.badge-info, .badge-low, .badge-medium, .badge-high {
+  font-size: 12px !important;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.badge-info {
+  background-color: #E3F2FD;
+  color: #007AFF;
+}
+
+.badge-low {
+  background-color: #E8F5E9;
+  color: #34C759;
+}
+
+.badge-medium {
+  background-color: #FFF3E0;
+  color: #FF9500;
+}
+
+.badge-high {
+  background-color: #FFEBEE;
+  color: #FF3B30;
+}
+
+/* 主题切换按钮 */
+.theme-toggle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  font-size: 16px;
+}
+
+.theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* 搜索引擎开关 */
+.engine-toggle {
+  width: 51px;
+  height: 31px;
+  background-color: #E5E5EA;
+  border-radius: 16px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+.engine-toggle::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 27px;
+  height: 27px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.engine-toggle.active {
+  background-color: #34C759;
+}
+
+.engine-toggle.active::before {
+  transform: translateX(20px);
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #C7C7CC;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #8E8E93;
+}
