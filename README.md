@@ -122,21 +122,6 @@ npm run build        # 产物在 dist/
 
 开发模式：`npm run dev`（watch 重新构建）；类型检查：`npm run typecheck`。
 
-## 🔧 开发与更新
-
-改完代码后，把改动同步到 GitHub 只有三步（项目里放了 `push-github.bat`，**双击它就能自动完成下面全部步骤**）：
-
-```bash
-npm run build                                # 1. 重新构建到 dist/
-git add . && git commit -m "这次改了什么"      # 2. 记录改动
-git push                                     # 3. 上传（首次会弹出浏览器登录 GitHub）
-```
-
-推完之后，去 `chrome://extensions/` 点扩展卡片上的 **⟳ 刷新**，Chrome 才会用上新代码。
-
-> `node_modules/` 与 `dist/` 已在 `.gitignore` 中排除，不要提交它们。
-> 详细的新手教程见仓库外的《如何更新到 GitHub · 新手版》。
-
 ## 📖 使用
 
 1. 在 Google / 百度 / Bing 执行 `site:目标学校.edu.cn`，面板自动出现
