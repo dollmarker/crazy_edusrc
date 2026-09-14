@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>crazyedusrc</title>
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body class="popup">
+  <div class="popup-head">
+    <span data-icon="logo" data-size="18"></span>
+    <b>crazyedusrc</b>
+    <em id="versionText">v2.0.0</em>
+  </div>
+
+  <div class="popup-body">
+    <div class="row">
+      <div class="label">
+        <b>猎洞侧边栏</b>
+        <span>在搜索结果页显示语法面板</span>
+      </div>
+      <button class="sw" id="swSidebar" role="switch" aria-checked="true" aria-label="猎洞侧边栏"></button>
+    </div>
+
+    <div class="row">
+      <div class="label">
+        <b>Google</b>
+        <span>google.com / google.com.hk 等</span>
+      </div>
+      <button class="sw" id="swGoogle" role="switch" aria-checked="true" aria-label="Google"></button>
+    </div>
+
+    <div class="row">
+      <div class="label">
+        <b>百度</b>
+        <span>baidu.com</span>
+      </div>
+      <button class="sw" id="swBaidu" role="switch" aria-checked="true" aria-label="百度"></button>
+    </div>
+
+    <div class="row">
+      <div class="label">
+        <b>Bing</b>
+        <span>bing.com / bing.cn 等</span>
+      </div>
+      <button class="sw" id="swBing" role="switch" aria-checked="true" aria-label="Bing"></button>
+    </div>
+
+    <div class="row">
+      <div class="label">
+        <b>敏感 URL 高亮</b>
+        <span>按危险程度分级标色</span>
+      </div>
+      <button class="sw" id="swSensitive" role="switch" aria-checked="true" aria-label="敏感 URL 高亮"></button>
+    </div>
+  </div>
+
+  <div class="popup-foot">
+    <button class="btn sm primary" id="openOptions" data-icon="sliders" data-size="14" data-label="全部设置"></button>
+    <div class="grow">Alt+Shift+S 唤起面板</div>
+  </div>
+
+  <div class="toasts" id="toasts"></div>
+  <script src="popup.js"></script>
+</body>
+</html>

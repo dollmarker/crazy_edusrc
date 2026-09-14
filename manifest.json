@@ -1,0 +1,86 @@
+{
+  "manifest_version": 3,
+  "name": "crazyedusrc",
+  "short_name": "crazyedusrc",
+  "version": "2.0.0",
+  "description": "EduSRC 教育行业猎洞工具：在 Google / 百度 / Bing 搜索结果页注入白底猎洞侧边栏，内置 60+ 教育行业专用语法、资产测绘四档联动（主域 / 证书拓线 / 组件指纹 / ICP 备案）、队列式一键跑高危与敏感 URL 分级高亮",
+  "homepage_url": "https://github.com/dollmarker/crazy_edusrc",
+  "minimum_chrome_version": "102",
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "toggle-panel": {
+      "suggested_key": { "default": "Alt+Shift+S" },
+      "description": "打开 / 收起 crazyedusrc 侧边栏"
+    },
+    "run-high-risk": {
+      "suggested_key": { "default": "Alt+Shift+R" },
+      "description": "对当前域名执行全部高危语法"
+    },
+    "extract-urls": {
+      "suggested_key": { "default": "Alt+Shift+U" },
+      "description": "提取当前结果页的 URL"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.google.com/*",
+        "*://*.google.com.hk/*",
+        "*://*.google.com.tw/*",
+        "*://*.google.co.jp/*",
+        "*://*.google.co.kr/*",
+        "*://*.google.co.uk/*",
+        "*://*.google.co.in/*",
+        "*://*.google.com.au/*",
+        "*://*.google.com.br/*",
+        "*://*.google.ca/*",
+        "*://*.google.de/*",
+        "*://*.google.fr/*",
+        "*://*.google.it/*",
+        "*://*.google.es/*",
+        "*://*.google.nl/*",
+        "*://*.google.ru/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["*://*.baidu.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "*://*.bing.com/*",
+        "*://*.bing.cn/*",
+        "*://*.bing.co.uk/*",
+        "*://*.bing.co.jp/*",
+        "*://*.bing.de/*",
+        "*://*.bing.fr/*",
+        "*://*.bing.it/*",
+        "*://*.bing.es/*",
+        "*://*.bing.ca/*",
+        "*://*.bing.com.au/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": ["storage"]
+}

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>crazyedusrc · 设置</title>
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body data-theme="light">
+  <header class="top">
+    <div class="brand">
+      <span data-icon="logo" data-size="18"></span>
+      crazyedusrc
+      <em id="versionText">v2.0.0</em>
+    </div>
+    <div class="top-actions">
+      <button class="icon-btn" id="themeToggle" data-icon="moon" data-size="16" title="切换深浅色"></button>
+      <a class="icon-btn" id="githubLink" href="#" target="_blank" rel="noopener noreferrer" data-icon="github" data-size="16" title="GitHub"></a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <nav class="tabs">
+      <a href="#general" class="nav-item is-active" data-section="general">基本设置</a>
+      <a href="#dorks" class="nav-item" data-section="dorks">语法库</a>
+      <a href="#about" class="nav-item" data-section="about">关于</a>
+    </nav>
+
+    <!-- ============ 基本设置 ============ -->
+    <section class="section is-active" id="general">
+      <div class="card">
+        <h2>显示</h2>
+        <p class="sub">所有改动即时生效并同步到已打开的搜索结果页</p>
+
+        <div class="row">
+          <div class="label"><b>猎洞侧边栏</b><span>关闭后不再向任何页面注入面板</span></div>
+          <button class="sw" id="swSidebar" role="switch" aria-checked="true"></button>
+        </div>
+        <div class="row">
+          <div class="label"><b>命中 site: 自动展开</b><span>关闭后可用快捷键 Alt+Shift+S 手动唤起</span></div>
+          <button class="sw" id="swAutoMount" role="switch" aria-checked="true"></button>
+        </div>
+        <div class="row">
+          <div class="label"><b>语法按攻击面分组</b><span>按敏感文档 / 后台入口 / 组件指纹等分类折叠展示</span></div>
+          <button class="sw" id="swGroup" role="switch" aria-checked="true"></button>
+        </div>
+        <div class="row">
+          <div class="label"><b>显示资产测绘面板</b><span>面板中的「测绘」标签页</span></div>
+          <button class="sw" id="swAsset" role="switch" aria-checked="true"></button>
+        </div>
+        <div class="row">
+          <div class="label"><b>敏感 URL 高亮</b><span>按数据库 / 配置 / 后台等特征分级标色</span></div>
+          <button class="sw" id="swSensitive" role="switch" aria-checked="true"></button>
+        </div>
+        <div class="row">
+          <div class="label"><b>显示「已执行」标记</b><span>记录每个域名已经跑过的语法，跨会话保留</span></div>
+          <button class="sw" id="swVisited" role="switch" aria-checked="true"></button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>搜索引擎</h2>
+        <p class="sub">只在对应站点注入面板</p>
+        <div class="row">
+          <div class="label"><b>Google</b><span>支持 intitle / inurl / filetype 等完整语法</span></div>
+          <button class="sw" id="swGoogle" role="switch" aria-checked="true"></button>
+        </div>
+        <div class="row">
+          <div class="label"><b>百度</b><span>edu.cn 中文文档收录更好</span></div>
+          <button class="sw" id="swBaidu" role="switch" aria-checked="true"></button>
+        </div>
+        <div class="row">
+          <div class="label"><b>Bing</b><span>contains: 语法仅 Bing 支持</span></div>
+          <button class="sw" id="swBing" role="switch" aria-checked="true"></button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>行为</h2>
+        <p class="sub">点击语法后如何打开结果</p>
+        <div class="row">
+          <div class="label"><b>在新标签页打开</b><span>关闭则在当前标签页跳转</span></div>
+          <button class="sw" id="swNewTab" role="switch" aria-checked="true"></button>
+        </div>
+        <div class="field-grid" style="margin-top:16px">
+          <div class="field">
+            <label for="batchLimit">一键跑高危 · 每批标签页上限</label>
+            <input class="input" id="batchLimit" type="number" min="1" max="20" step="1" value="5" />
+            <div class="tip">每批之间会额外等待，降低触发人机验证的概率</div>
+          </div>
+          <div class="field">
+            <label for="batchDelay">标签页间隔（毫秒）</label>
+            <input class="input" id="batchDelay" type="number" min="300" max="10000" step="100" value="1200" />
+            <div class="tip">建议不低于 800ms</div>
+          </div>
+        </div>
+        <div class="row" style="margin-top:16px">
+          <div class="label"><b>URL 点击动作</b><span>点击提取结果时执行的操作</span></div>
+          <div style="display:flex;gap:12px;font-size:13px">
+            <label style="display:flex;align-items:center;gap:5px"><input type="radio" name="urlAction" value="copy" checked /> 复制</label>
+            <label style="display:flex;align-items:center;gap:5px"><input type="radio" name="urlAction" value="open" /> 打开</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>URL 黑名单</h2>
+        <p class="sub">提取 URL 时过滤匹配项，每行一条；支持通配符 *.example.com 与正则 /pattern/</p>
+        <textarea class="input" id="urlBlacklist" rows="6" placeholder="example.com&#10;*.example.org&#10;/\.gov$/"></textarea>
+      </div>
+
+      <div class="card">
+        <h2>外观</h2>
+        <p class="sub">面板与设置页共用一套白底设计</p>
+        <div class="row">
+          <div class="label"><b>深色模式</b><span>面板跟随设置页的主题</span></div>
+          <button class="sw" id="swDark" role="switch" aria-checked="false"></button>
+        </div>
+        <div class="row">
+          <div class="label"><b>跟随系统</b><span>系统为深色时自动使用深色面板</span></div>
+          <button class="sw" id="swFollowSystem" role="switch" aria-checked="true"></button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>数据</h2>
+        <p class="sub">所有数据只保存在本机，不上传任何服务器</p>
+        <div class="row">
+          <div class="label"><b>清空「已执行」记录</b><span>仅清除标记，不影响语法库与设置</span></div>
+          <button class="btn danger sm" id="clearVisited" data-icon="trash" data-size="13" data-label="清空"></button>
+        </div>
+        <div class="row">
+          <div class="label"><b>恢复默认设置</b><span>设置项与内置语法开关回到初始状态</span></div>
+          <button class="btn danger sm" id="resetSettings" data-icon="refresh" data-size="13" data-label="恢复默认"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 语法库 ============ -->
+    <section class="section" id="dorks">
+      <div class="card">
+        <h2>语法库</h2>
+        <p class="sub">内置语法随扩展升级自动更新，你只需控制开关；自定义语法永久保留</p>
+        <div class="stats" id="dorkStats"></div>
+
+        <div class="toolbar">
+          <input class="input grow" id="dorkSearch" type="text" placeholder="搜索语法名称或模板" />
+          <select class="input" id="dorkFilter" style="width:130px">
+            <option value="all">全部分类</option>
+          </select>
+          <select class="input" id="dorkEngine" style="width:120px">
+            <option value="all">全引擎</option>
+            <option value="google">Google</option>
+            <option value="baidu">百度</option>
+            <option value="bing">Bing</option>
+          </select>
+        </div>
+
+        <div class="dork-list" id="dorkList"></div>
+      </div>
+
+      <div class="card">
+        <h2>新增自定义语法</h2>
+        <p class="sub">模板中必须包含 {target_domain} 占位符</p>
+        <div class="field-grid">
+          <div class="field">
+            <label for="newName">名称</label>
+            <input class="input" id="newName" type="text" placeholder="如：某教务系统指纹" maxlength="60" />
+          </div>
+          <div class="field">
+            <label for="newCategory">分类</label>
+            <select class="input" id="newCategory"></select>
+          </div>
+        </div>
+        <div class="field" style="margin-top:14px">
+          <label for="newTemplate">语法模板</label>
+          <input class="input" id="newTemplate" type="text" placeholder="site:{target_domain} inurl:xxx" />
+        </div>
+        <div class="field-grid" style="margin-top:14px">
+          <div class="field">
+            <label for="newRisk">风险等级</label>
+            <select class="input" id="newRisk">
+              <option value="high">high</option>
+              <option value="medium" selected>medium</option>
+              <option value="low">low</option>
+              <option value="info">info</option>
+            </select>
+          </div>
+          <div class="field" style="display:flex;align-items:flex-end">
+            <button class="btn accent" id="addDork" data-icon="plus" data-size="14" data-label="添加语法" style="width:100%"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>导入 / 导出</h2>
+        <p class="sub">用于备份或与队友分享语法库（导入的语法一律按自定义语法处理）</p>
+        <div class="toolbar" style="margin-bottom:0">
+          <button class="btn" id="exportDorks" data-icon="download" data-size="14" data-label="导出 JSON"></button>
+          <button class="btn" id="importDorks" data-icon="upload" data-size="14" data-label="导入 JSON"></button>
+          <input type="file" id="importFile" accept="application/json,.json" hidden />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 关于 ============ -->
+    <section class="section" id="about">
+      <div class="notice">
+        <b>免责声明</b><br />
+        本工具仅用于 EduSRC 等平台<strong>授权范围内</strong>的合法安全研究与漏洞挖掘。
+        搜索引擎能搜到目标 ≠ 授权可以测试。实际验证前请确认目标在平台收录范围内，并遵守《网络安全法》等相关法律法规，使用者对自身行为独立承担责任。
+      </div>
+
+      <div class="card">
+        <h2>快捷键</h2>
+        <div class="kv"><span>唤起 / 收起面板</span><b><code class="kbd">Alt</code> + <code class="kbd">Shift</code> + <code class="kbd">S</code></b></div>
+        <div class="kv"><span>执行全部高危语法</span><b><code class="kbd">Alt</code> + <code class="kbd">Shift</code> + <code class="kbd">R</code></b></div>
+        <div class="kv"><span>提取当前页 URL</span><b><code class="kbd">Alt</code> + <code class="kbd">Shift</code> + <code class="kbd">U</code></b></div>
+        <div class="kv"><span>面板内聚焦搜索框</span><b><code class="kbd">/</code></b></div>
+        <div class="kv"><span>面板内收起为悬浮球</span><b><code class="kbd">Esc</code></b></div>
+      </div>
+
+      <div class="card">
+        <h2>版本</h2>
+        <div class="kv"><span>当前版本</span><b id="aboutVersion">v2.0.0</b></div>
+        <div class="kv"><span>仓库</span><b><a id="aboutGithub" href="#" target="_blank" rel="noopener noreferrer">GitHub</a></b></div>
+        <div class="kv"><span>许可</span><b>MIT</b></div>
+        <div class="kv"><span>致谢</span><b>基于 google-hacking-assistant 二次开发</b></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toasts" id="toasts"></div>
+  <script src="options.js"></script>
+</body>
+</html>
