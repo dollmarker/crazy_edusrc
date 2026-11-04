@@ -187,3 +187,12 @@ src/
 ## 🙏 致谢
 
 基于开源项目 [google-hacking-assistant](https://github.com/Pa55w0rd/google-hacking-assistant) 二次开发。
+## Star History
+
+<a href="https://www.star-history.com/?repos=dollmarker%2Fcrazy_edusrc&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=dollmarker/crazy_edusrc&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=dollmarker/crazy_edusrc&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=dollmarker/crazy_edusrc&type=date&legend=top-left" />
+ </picture>
+</a>
